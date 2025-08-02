@@ -1,5 +1,5 @@
 <nav class="navbar">
-    <div class="logo">Logo</div>
+    <a href={{routes.root_url}} class="logo">Logo</a>
     <ul class="nav-menu">
         <li class="nav-item">
             {% for link in linklists.header.links %}
@@ -7,6 +7,18 @@
             {% endfor %}
         </li>
     </ul>
-    <button type="button" class="buy-now-btn">Buy Now</button>
+    <a href="{[section.settings.product_id]}" type="button" class="buy-now-btn">Buy Now</a>
 </nav>
 
+{% schema %}
+    {
+        "name": "Header",
+        "settings": [
+            {
+                "type": "product",
+                "id": "product_id",
+                "label": "Link to product"
+            }
+        ]
+    }
+{% endschema %}
