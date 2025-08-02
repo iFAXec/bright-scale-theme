@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
-
-
     {{ content_for_header }}
+    <link rel="stylesheet" href="{{ 'global.css' | asset_url }}">
+
   </head>
 
   <body>
-
-    {{ content_for_layout }}
-
+    {% sections "header-group" %}
+      <main class="main-container">
+        {{ content_for_layout }}
+      </main>
+    {% sections "footer-group" %}
   </body>
+
 </html>

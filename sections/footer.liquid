@@ -1,0 +1,15 @@
+<footer class="custom-footer">
+    <div class="footer-links">
+        <h4 class="footer-title">Quick Links</h4>
+        <ul>
+            {% for link in linklists.footer-1.links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="footer-copy">
+        &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. All rights reserved.
+    </div>
+</footer>
+
+

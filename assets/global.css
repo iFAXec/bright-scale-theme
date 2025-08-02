@@ -1,0 +1,101 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    line-height: 1.5;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.nav-item {
+    display: flex;
+    gap: 100px;
+
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+.buy-now-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.buy-now-btn:hover {
+    background-color: #218838;
+    transform: scale(1.1);
+}
+
+.custom-footer {
+    background: seagreen;
+    color: #fff;
+    padding: 40px 0 20px 0;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    color: #f8d90f;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    display: inline-block;
+    margin: 0 12px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #f8d90f;
+}
+
+.footer-copy {
+    font-size: 0.95em;
+    color: #bbb;
+    margin-top: 10px;
+}

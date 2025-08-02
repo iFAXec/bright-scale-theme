@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <div class="logo">Logo</div>
+    <ul class="nav-menu">
+        <li class="nav-item">
+            {% for link in linklists.header.links %}
+                <a href="{{link.url}}" class="nav-link">{{link.title}}</a>
+            {% endfor %}
+        </li>
+    </ul>
+    <button type="button" class="buy-now-btn">Buy Now</button>
+</nav>
+
