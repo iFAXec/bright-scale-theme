@@ -1,0 +1,42 @@
+{{"product-showcase.css" | asset_url | stylesheet_tag}}
+
+
+<div class="product-showcase-container">
+    <img class="product-showcase-image" src="{{section.settings.product-showcase-image | image_url}}" alt="{{product.title}}">
+    <div class="product-showcase-details">
+        <h2>{{section.settings.text-h2}}</h2>
+        <p>{{section.settings.text-p}}</p>
+    </div>
+</div>
+
+{% schema %}
+        {
+                "name": "Product Showcase",
+                "settings": [
+                    {
+                      "type": "image_picker",
+                      "id": "product-showcase-image",
+                      "label": "Product Showcase Image"
+                    },
+                    {
+                      "type": "text",
+                      "id": "text-h2",
+                      "label": "Headline text",
+                      "default": "Enter headline text here"
+                    },
+                    {
+                      "type": "text",
+                      "id": "text-p",
+                      "label": "Paragraph text",
+                      "default": "Enter paragraph text here"
+                    }
+
+                ],
+                "presets": [
+                    {
+                        "name": "Product-Showcase"
+
+                    }
+                ]
+        }
+{% endschema %}

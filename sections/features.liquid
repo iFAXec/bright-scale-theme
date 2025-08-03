@@ -1,0 +1,47 @@
+{{"features.css" | asset_url | stylesheet_tag }}
+
+<section class="features-section">
+    <div class="features-container">
+        {% for block in section.blocks %}
+            <div class="feature-item">
+                    <h3 class="feature-title">{{block.settings.header-block-text}}</h3>
+                    <p class="feature-desc">{{block.settings.para-block-text}}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Features",
+        "settings": [
+        ],
+        "blocks": [
+          {
+            "name": "feature-block",
+            "type": "feature-block",
+            "settings": [
+                {
+                  "type": "text",
+                  "id": "header-block-text",
+                  "label": "Header Text",
+                  "default": "Enter Title here"
+                },
+                {
+                  "type": "text",
+                  "id": "para-block-text",
+                  "label": "Para Text",
+                  "default": "Enter Description here"
+                }
+            ]
+          }
+        ],
+        "presets": [
+    {
+        "name": "Features"
+    }
+    ]
+}
+
+{% endschema %}
+

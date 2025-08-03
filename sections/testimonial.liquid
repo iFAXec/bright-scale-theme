@@ -1,0 +1,106 @@
+<style>
+.testimonials-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    margin: 40px auto;
+    max-width: 1400px;
+}
+.testimonial-section {
+    background: #f9fafb;
+    padding: 40px 24px;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    max-width: 350px;
+    min-width: 280px;
+    flex: 1 1 300px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.testimonial-quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+.testimonial-author {
+    font-weight: bold;
+    color: #1a202c;
+    font-size: 1.1rem;
+}
+.testimonial-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border: 3px solid #e5e7eb;
+}
+@media (max-width: 900px) {
+    .testimonials-wrapper {
+        flex-direction: column;
+        gap: 24px;
+        max-width: 100%;
+    }
+    .testimonial-section {
+        max-width: 100%;
+    }
+}
+</style>
+
+<div class="testimonials-wrapper">
+    {% for block in section.blocks %}
+        <section class="testimonial-section">
+            <img class="testimonial-avatar" src={{ block.settings.customer-image | image_url: width: 200, height:200}} alt="Customer photo">
+            <div class="testimonial-quote">{{ block.settings.testimonial-text }}</div>
+            <div class="testimonial-author">{{ block.settings.customer-name }}</div>    
+        </section>
+    {% endfor %}
+</div>
+
+
+{% schema %}
+        {
+                "name": "testimonial",
+                "settings": [                                   
+                ], "blocks": [
+                  {
+                    "name": "testimonial",
+                    "type": "testimonial-section",
+                    "settings": [
+                        {
+                        "type": "image_picker",
+                        "id": "customer-image",
+                        "label": "Customer Image"
+                        },
+                        {
+                        "type": "text",
+                        "id": "testimonial-text",
+                        "label": "Customer Review",
+                        "default":"Enter Customer review"
+                        },
+                        {
+                        "type": "text",
+                        "id": "customer-name",
+                        "label": "Customer Name",
+                        "default":"Enter Customer Name"
+                        }
+                       
+                    ]
+                  }
+                ],
+
+
+                "presets": [
+                    {
+                        "name": "testimonial"
+                 
+                    }
+                ]
+        }
+{% endschema %}
