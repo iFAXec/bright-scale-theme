@@ -1,0 +1,39 @@
+{{"featured-blogs.css" | asset_url | stylesheet_tag}}
+
+<div class="featured-blogs-wrapper">
+{% for article in blogs.News.articles %}    
+    <div class="featured-blog-section">
+        <img src="{{ article.image | img_url: 'medium' }}" alt="{{ article.title }}" class="featured-blog-image">
+        <h2 class="featured-blog-title">
+            {{ article.title }}
+        </h2>
+        <p class="featured-blog-description">
+            {{ article.excerpt_or_content | truncatewords: 30  }}
+        </p>        
+        <a href="{{article.url}}" class="featured-blog-readmore">Read More</a>
+    </div>
+{% endfor %}
+</div>
+
+
+{% schema %}
+{
+    "name": "Featured Blogs",
+    "settings": [
+    {
+      "type": "text",
+      "id": "blog-title",
+      "label": "Blog Title"
+    },
+    {
+      "type": "text",
+      "id": "blog-description",
+      "label": "Blog Description"
+    }
+],"presets": [
+  {
+    "name": "Featured Blogs"
+  }
+]
+}
+{% endschema %}

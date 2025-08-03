@@ -1,0 +1,23 @@
+[33mcommit 22a582a040d67b994a8d9b14c72ec792f987b580[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Fay <xecfahim.ahmed@gmail.com>
+Date:   Sun Aug 3 16:03:15 2025 +0400
+
+    add feature and testimonial sections
+
+[33mcommit d103ce9f58133b68b87d60c6ae3656d97d2dbb44[m
+Author: Fay <xecfahim.ahmed@gmail.com>
+Date:   Sat Aug 2 18:22:18 2025 +0400
+
+    add hero banner
+
+[33mcommit 83844fa584f412c19a636bdcf46952cc5d1dd237[m
+Author: Fay <xecfahim.ahmed@gmail.com>
+Date:   Sat Aug 2 17:09:07 2025 +0400
+
+    add header and footer
+
+[33mcommit 96bf534fd1498cbbab990bd81af5d7d7baf107eb[m
+Author: Fay <xecfahim.ahmed@gmail.com>
+Date:   Fri Aug 1 23:48:44 2025 +0400
+
+    Initial commit
