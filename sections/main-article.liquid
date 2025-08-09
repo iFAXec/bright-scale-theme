@@ -1,0 +1,90 @@
+{{"blog-post.css" | asset_url | stylesheet_tag}}
+
+<style>
+.blog-post-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 40px 32px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.blog-post-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #222;
+    letter-spacing: -1px;
+}
+
+.blog-post-meta {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.blog-post-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 32px;
+}
+
+.blog-post-content {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 32px;
+}
+
+.blog-post-placeholder {
+    background: #f6f6f6;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    color: #aaa;
+    font-size: 1.1rem;
+}
+</style>
+
+
+<div class="blog-post-container">
+    <h1 class="blog-post-title">{{ article.title }}</h1>
+    <div class="blog-post-meta">
+        <span>{{ article.author }}</span>
+        <span>{{ article.published_at | time_tag: format: 'date'}}</span>
+        <span>{{ article.tags | join: ', ' }}</span>
+    </div>
+    {% if article.image %}
+        <img class="blog-post-image" src="{{ article.image | img_url: '800x' }}" alt="{{ article.title }}">
+    {% endif %}
+    <div class="blog-post-content">
+        {{ article.content }}
+    </div>
+</div>
+
+<script>
+    console.log( "article:", {{ article |  json }} )
+</script>
+
+
+{% schema %}
+        {
+                "name": "Blog-Post",
+                "settings": [
+                    
+                ],
+                "presets": [
+                    {
+                        "name": " Blog Post"
+                    }
+                ]
+        }
+{% endschema %}

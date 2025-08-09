@@ -1,120 +1,70 @@
+{{"main-product.css" | asset_url | stylesheet_tag}}
+
+
+
 <div class="main-product-container">
     <div class="product-video">
-        {{ section.settings.product-video | media_tag }}
+        {{ product.metafields.custom.product_video | media_tag: width:500, height:360 }}
     </div>
     <div class="product-details">
         <h1 class="product-title">{{ product.title }}</h1>
         <div class="product-price">
             {{ product.price | money }}
-            {% if product.compare_at_price > product.price %}
-                <span class="compare-at-price">{{ product.compare_at_price | money }}</span>
-            {% endif %}
         </div>
         <div class="product-description">
-            {{ product.description }}
+            {{ section.settings.product-desc-textarea }}
         </div>
-        <form method="post" action="/cart/add">
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {% for line in product.metafields.custom.quality.value %}
+            <ul>
+                <li>{{ line }}</li>
+            </ul>
+        {% endfor %}
+
+        <div>
             <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-        </form>
+        </div>
+        
     </div>
 </div>
 
-<style>
-.main-product-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.07);
-    padding: 40px;
-    margin: 40px auto;
-    max-width: 1100px;
-    align-items: flex-start;
-}
-.product-video {
-    flex: 1 1 320px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-}
-.product-video video {
-    width: 320px;
-    max-width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
-.product-details {
-    flex: 2 1 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-.product-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #1a1a1a;
-}
-.product-price {
-    font-size: 1.5rem;
-    color: #2e7d32;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-.compare-at-price {
-    text-decoration: line-through;
-    color: #bdbdbd;
-    font-size: 1.1rem;
-    margin-left: 12px;
-}
-.product-description {
-    color: #444;
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
-.add-to-cart-btn {
-    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border: none;
-    border-radius: 8px;
-    padding: 16px 32px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(67,233,123,0.12);
-    transition: background 0.2s, transform 0.2s;
-}
-.add-to-cart-btn:hover {
-    background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
-    transform: translateY(-2px) scale(1.03);
-}
-@media (max-width: 900px) {
-    .main-product-container {
-        flex-direction: column;
-        padding: 20px;
-        gap: 24px;
-    }
-    .product-video, .product-details {
-        flex: 1 1 100%;
-    }
-    .product-video {
-        justify-content: flex-start;
-    }
-}
-</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+            document.querySelector(".add-to-cart-btn").addEventListener("click", () => {
+                let formData = {
+                    'items': [{
+                        'id': {{ product.selected_or_first_available_variant.id }},
+                'quantity': 1
+                }]
+            };
+
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+                },
+        body: JSON.stringify(formData)
+            })
+            .then(response => {
+                return response.json();
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+        });
+    });
+</script>
+
 
 {% schema %}
     {
         "name": "Main product",
         "settings": [
             {
-              "type": "video",
-              "id": "product-video",
-              "label": "Product video"
+              "type": "textarea",
+              "id": "product-desc-textarea",
+              "label": "Product video",
+              "default":"Enter your desc here"
             }
-        
         ],
         "presets": [
           {
