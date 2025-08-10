@@ -7,7 +7,7 @@
             {% endfor %}
         </li>
     </ul>
-    <a href="{[section.settings.product_id]}" type="button" class="buy-now-btn">Buy Now</a>
+    <a href="/products/{{section.settings.product_header }}" type="button" class="buy-now-btn">Buy Now</a>
 </nav>
 
 {% schema %}
@@ -16,9 +16,10 @@
         "settings": [
             {
                 "type": "product",
-                "id": "product_id",
+                "id": "product_header",
                 "label": "Link to product"
             }
+            
         ]
     }
 {% endschema %}

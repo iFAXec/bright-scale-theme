@@ -18,42 +18,22 @@
             <ul>
                 <li>{{ line }}</li>
             </ul>
-        {% endfor %}
+        {% endfor %}        
 
-        <div>
-            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-        </div>
-        
     </div>
-</div>
+        {% assign product_form_id = 'product-form-' | append: section.id %}
+        {% form 'product',
+            product,
+            id: product_form_id,
+            class: 'form',
+            novalidate: 'novalidate',
+            data-type: 'add-to-cart-form' %}
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-            document.querySelector(".add-to-cart-btn").addEventListener("click", () => {
-                let formData = {
-                    'items': [{
-                        'id': {{ product.selected_or_first_available_variant.id }},
-                'quantity': 1
-                }]
-            };
-
-        fetch(window.Shopify.routes.root + 'cart/add.js', {
-            method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-                },
-        body: JSON.stringify(formData)
-            })
-            .then(response => {
-                return response.json();
-            })
-            .catch((error) => {
-            console.error('Error:', error);
-            });
-        });
-    });
-</script>
-
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="product-variant-id">
+        
+            {{ form | payment_button | class: 'add-to-cart-btn' }}
+        {% endform %}
+    </div>
 
 {% schema %}
     {

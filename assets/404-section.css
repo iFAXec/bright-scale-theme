@@ -1,0 +1,44 @@
+.custom-404-container {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+}
+
+.custom-404-content {
+    text-align: center;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(60, 72, 88, 0.12);
+    background: #fff;
+}
+
+.custom-404-title {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #6366f1;
+    margin-bottom: 16px;
+}
+
+.custom-404-message {
+    font-size: 1.5rem;
+    color: #334155;
+    margin-bottom: 32px;
+}
+
+.custom-404-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: #6366f1;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.custom-404-btn:hover {
+    background: #4338ca;
+}

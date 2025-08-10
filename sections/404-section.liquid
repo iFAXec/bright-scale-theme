@@ -1,0 +1,41 @@
+{{"404-section.css" | asset_url | stylesheet_tag}}
+<div class="custom-404-container">
+    <div class="custom-404-content">
+        <h1 class="custom-404-title">{{section.settings.title_404}}</h1>
+        <p class="custom-404-message"> {{section.settings.para_text}} </p>
+        <a href="{{ routes.root_url }}" class="custom-404-btn">{{section.settings.button_text}}</a>
+    </div>
+</div>
+
+
+{% schema %}
+        {
+                "name": "404",
+                "settings": [
+
+                {
+                "type": "text",
+                "id": "title_404",
+                "label": "404 Title",
+                "default": "404"
+                },
+                {
+                  "type": "text",
+                  "id": "para_text",
+                  "label": "Paragraph Text",
+                  "default": "Oops! The page you are looking for does not exist."
+                },
+                {
+                  "type": "text",
+                  "id": "button_text",
+                  "label": "Button Text",
+                  "default": "Go Back Home"
+                }
+                ],
+                "presets": [
+                    {
+                        "name": "404"
+                }
+        ]
+}
+{% endschema %}

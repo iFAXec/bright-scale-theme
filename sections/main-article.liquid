@@ -55,20 +55,30 @@
 </style>
 
 
-<div class="blog-post-container">
-    <h1 class="blog-post-title">{{ article.title }}</h1>
-    <div class="blog-post-meta">
-        <span>{{ article.author }}</span>
-        <span>{{ article.published_at | time_tag: format: 'date'}}</span>
-        <span>{{ article.tags | join: ', ' }}</span>
+<main class="blog-post-container">
+    <article>
+        <h1 class="blog-post-title">{{ article.title }}</h1>
+        <div class="blog-post-meta">
+            <span>{{ article.author }}</span>
+            <span>{{ article.published_at | time_tag: format: 'date'}}</span>
+            <span>{{ article.tags | join: ', ' }}</span>
+        </div>
+        {% if article.image %}
+            <img class="blog-post-image" src="{{ article.image | img_url: '800x' }}" alt="{{ article.title }}">
+        {% endif %}
+        <div class="blog-post-content">
+            {{ article.content }}
+        </div>
+    </article>
+</main>
+
+<section class="author-boi">
+    <img src="{{metaobjects.name.jessa.image | img_url}}" alt="author-avatar" class="author-avatar" />
+    <div class="author-info">
+        <h3>{{ metaobjects.name.jessa.name }}</h3>
+        <p>{{ metaobjects.name.jessa.bio }}</p>
     </div>
-    {% if article.image %}
-        <img class="blog-post-image" src="{{ article.image | img_url: '800x' }}" alt="{{ article.title }}">
-    {% endif %}
-    <div class="blog-post-content">
-        {{ article.content }}
-    </div>
-</div>
+</section>
 
 <script>
     console.log( "article:", {{ article |  json }} )
